@@ -1,0 +1,22 @@
+{
+  "orders": [
+    {
+      "productName": "ZARA COAT 3",
+      "countryCode": "ind",
+      "countryName": "India",
+      "description": "Place order for Zara Coat"
+    },
+    {
+      "productName": "ADIDAS ORIGINAL",
+      "countryCode": "ind",
+      "countryName": "India",
+      "description": "Place order for Adidas Original"
+    },
+    {
+      "productName": "IPHONE 13 PRO",
+      "countryCode": "ind",
+      "countryName": "India",
+      "description": "Place order for iPhone 13 Pro"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "validUsers": [
+    {
+      "username": "anshika@gmail.com",
+      "password": "Iamking@000",
+      "description": "Valid standard user"
+    }
+  ],
+  "invalidUsers": [
+    {
+      "username": "rahulshetty",
+      "password": "learning",
+      "expectedError": "Incorrect",
+      "description": "Invalid credentials"
+    },
+    {
+      "username": "",
+      "password": "",
+      "expectedError": "required",
+      "description": "Empty credentials"
+    }
+  ]
+}

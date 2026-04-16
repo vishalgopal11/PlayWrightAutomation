@@ -3,3 +3,9 @@ allure-report/
 allure-results/
 playwright-report/
 test-results/
+reports/
+dist/
+state.json
+.env
+*.png
+*.zip

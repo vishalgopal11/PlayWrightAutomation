@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
 import ExcelJs from 'exceljs';
+import path from 'path';
+import os from 'os';
 
 async function writeExcelTest(
   searchText: string,
@@ -39,10 +41,12 @@ test('Upload download excel validation', async ({ page }) => {
   await page.goto('https://rahulshettyacademy.com/upload-download-test/index.html');
   const downloadPromise = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Download' }).click();
-  await downloadPromise;
-  writeExcelTest(textSearch, updateValue, { rowChange: 0, colChange: 2 }, '/Users/rahulshetty/downloads/download.xlsx');
+  const download = await downloadPromise;
+  const downloadPath = path.join(os.tmpdir(), 'download.xlsx');
+  await download.saveAs(downloadPath);
+  await writeExcelTest(textSearch, updateValue, { rowChange: 0, colChange: 2 }, downloadPath);
   await page.locator('#fileinput').click();
-  await page.locator('#fileinput').setInputFiles('/Users/rahulshetty/downloads/download.xlsx');
+  await page.locator('#fileinput').setInputFiles(downloadPath);
   const textlocator = page.getByText(textSearch);
   const desiredRow = page.getByRole('row').filter({ has: textlocator });
   await expect(desiredRow.locator('#cell-4-undefined')).toContainText(updateValue);

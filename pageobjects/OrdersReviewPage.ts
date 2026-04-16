@@ -20,7 +20,7 @@ export class OrdersReviewPage {
   }
 
   async searchCountryAndSelect(countryCode: string, countryName: string) {
-    await this.country.pressSequentially('ind');
+    await this.country.pressSequentially(countryCode);
     await this.dropdown.waitFor();
     const optionsCount = await this.dropdown.locator('button').count();
     for (let i = 0; i < optionsCount; ++i) {

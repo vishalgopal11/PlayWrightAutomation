@@ -2,6 +2,8 @@ import { After, Before, AfterStep, BeforeAll, AfterAll, Status, World, setWorldC
 import { chromium, firefox, webkit, type Browser, type BrowserContext, type Page } from '@playwright/test';
 import { config } from '../../config/environment';
 import { POManager } from '../../pageobjects/POManager';
+import { DashboardPage } from '../../pageobjects/DashboardPage';
+import { CartPage } from '../../pageobjects/CartPage';
 
 let browser: Browser;
 
@@ -14,8 +16,8 @@ class CustomWorld extends World {
 
   // Shared state across steps
   orderId?: string;
-  dashboardPage?: any;
-  cartPage?: any;
+  dashboardPage?: DashboardPage;
+  cartPage?: CartPage;
 
   constructor(options: IWorldOptions) {
     super(options);

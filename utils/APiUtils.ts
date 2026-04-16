@@ -30,9 +30,11 @@ export class APiUtils {
         data: this.loginPayLoad,
       }
     );
+    if (!loginResponse.ok()) {
+      throw new Error(`Login API failed with status: ${loginResponse.status()}`);
+    }
     const loginResponseJson = await loginResponse.json();
     const token = loginResponseJson.token;
-    console.log(token);
     return token;
   }
 
@@ -48,8 +50,10 @@ export class APiUtils {
         },
       }
     );
+    if (!orderResponse.ok()) {
+      throw new Error(`Create order API failed with status: ${orderResponse.status()}`);
+    }
     const orderResponseJson = await orderResponse.json();
-    console.log(orderResponseJson);
     const orderId = orderResponseJson.orders[0];
 
     return { token, orderId };
